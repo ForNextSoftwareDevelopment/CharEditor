@@ -4,7 +4,7 @@ Character editor for the Commodore 64
 This program helps to design characters for the commodore 64.
 It will generate a binary file aimed to load as a logical file.
 
-The commodore program 'CharTest' which also can be found here could be used to load the character set in the commodore 64.
+The commodore program 'CharTest' that also can be found here in another repository could be used to load the character set into the commodore 64.
 
 Copyright (c) 2021 Dirk Prins
 
