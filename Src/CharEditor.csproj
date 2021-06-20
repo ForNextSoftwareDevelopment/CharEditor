@@ -85,8 +85,6 @@
     <Content Include="Pictures\rotateright - org.png" />
     <Content Include="Pictures\rotateright.png" />
     <Content Include="Pictures\save.png" />
-    <Content Include="Pictures\saveraw.png" />
-    <Content Include="Pictures\saveraw.svg" />
     <Content Include="Pictures\shiftdown.png" />
     <Content Include="Pictures\shiftleft.png" />
     <Content Include="Pictures\shiftright - org.jpg" />
