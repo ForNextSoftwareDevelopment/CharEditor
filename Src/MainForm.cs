@@ -55,7 +55,7 @@ namespace CharEditor
         /// <summary>
         /// Constructor
         /// </summary>
-        public MainForm()
+        public MainForm(string fileName = "")
         {
             InitializeComponent();
 
@@ -63,6 +63,12 @@ namespace CharEditor
 
             // Set data, colors, screens etc
             Init();
+
+            // Open file (if provided)
+            if (fileName != "")
+            {
+                LoadFile(fileName);
+            }
         }
 
         #endregion
