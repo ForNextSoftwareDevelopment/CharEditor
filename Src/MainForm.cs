@@ -55,7 +55,7 @@ namespace CharEditor
         /// <summary>
         /// Constructor
         /// </summary>
-        public MainForm(string fileName = "")
+        public MainForm()
         {
             InitializeComponent();
 
@@ -63,12 +63,6 @@ namespace CharEditor
 
             // Set data, colors, screens etc
             Init();
-
-            // Open file (if provided)
-            if (fileName != "")
-            {
-                LoadFile(fileName);
-            }
         }
 
         #endregion
@@ -140,6 +134,12 @@ namespace CharEditor
 
             if (rbExtendedGeneral.Checked)
             {
+                if (selectedChar > Constants.NUM_CHARS_EXTENDED)
+                {
+                    selectedChar = 0;
+                    pbChars.Invalidate();
+                }
+
                 for (int column = 0; column < Constants.CHAR_WIDTH; column++)
                 {
                     for (int row = 0; row < Constants.CHAR_HEIGHT; row++)
@@ -451,6 +451,7 @@ namespace CharEditor
                 if (panel.Name == "panelCharColor")
                 {
                     charColor[selectedChar] = Convert.ToByte((charColor[selectedChar] & 0b11110000) | colorDialog.colorIndex);
+                    if (rbMultiColorCharacter.Checked) charColor[selectedChar] = Convert.ToByte(charColor[selectedChar] | 0b00001000);
                 }
 
                 if (panel.Name == "panelCharMultiColor0")
@@ -577,12 +578,6 @@ namespace CharEditor
         {
             if (rbExtendedGeneral.Checked)
             {
-                if (selectedChar > Constants.NUM_CHARS_EXTENDED)
-                {
-                    selectedChar = 0;
-                    RefreshSelectedChar();
-                }
-
                 rbCharBackgroundColor.Enabled = false;
                 panelCharBackgroundColor.Enabled = false;
 
@@ -1163,11 +1158,6 @@ namespace CharEditor
             {
                 charBackgroundColorExtended[i] = 0x00;
             }
-
-            charBackgroundColorExtended0 = 0x00;
-            charBackgroundColorExtended1 = 0x01;
-            charBackgroundColorExtended2 = 0x0C;
-            charBackgroundColorExtended3 = 0x0F;
 
             charMultiColor0 = 0x0F;
             charMultiColor1 = 0x0C;
